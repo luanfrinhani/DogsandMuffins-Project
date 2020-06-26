@@ -16,16 +16,16 @@ from flask_cors import CORS,cross_origin
 app = Flask(__name__)
 CORS(app, support_credentials=True)
 
-!pwd
+#!pwd
 
-from google.colab import drive
-drive.mount('/content/drive')
+#from google.colab import drive
+#drive.mount('/content/drive')
 
 !pip install "torch==1.4" "torchvision==0.5.0"
 
 #Path('drive/My Drive/test')
 # load the learner
-learn = load_learner(path='drive/My Drive/test', file='trained_model.pkl')
+learn = load_learner(path='./Model', file='trained_model.pkl')
 classes = learn.data.classes
 
 classes
