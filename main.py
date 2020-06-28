@@ -28,8 +28,7 @@ CORS(app, support_credentials=True)
 # load the learner
 learn = load_learner(path='./Model', file='trained_model.pkl')
 classes = learn.data.classes
-
-classes
+ 
 
 def predict_single(img_file):
     'function to take image and return prediction'
