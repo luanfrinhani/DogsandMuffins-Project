@@ -12,14 +12,14 @@ Original file is located at
 
 
 from flask import Flask,render_template,request,url_for,jsonify 
-from fastai.basic_train import load_learner
-from fastai.vision import open_image
-from flask_cors import CORS,cross_origin
+#from fastai.basic_train import load_learner
+#from fastai.vision import open_image
+#from flask_cors import CORS,cross_origin
 app = Flask(__name__)
-CORS(app, support_credentials=True)
+#CORS(app, support_credentials=True)
 
 @app.route("/")
-def index():
+def homepage():
 	return render_template("index.html")
 #!pwd
 
@@ -30,15 +30,15 @@ def index():
 
 #Path('drive/My Drive/test')
 # load the learner
-learn = load_learner(path='./Model', file='trained_model.pkl')
-classes = learn.data.classes
+#learn = load_learner(path='./Model', file='trained_model.pkl')
+#classes = learn.data.classes
  
 
-def predict_single(img_file):
-    'function to take image and return prediction'
-    prediction = learn.predict(open_image(img_file))
-    probs_list = prediction[2].numpy()
-    return(probs_list)
+#def predict_single(img_file):
+#    'function to take image and return prediction'
+#    prediction = learn.predict(open_image(img_file))
+#    probs_list = prediction[2].numpy()
+#    return(probs_list)
 #    return {
 #        'category': classes[prediction[1].item()],
 #        'probs': {c: round(float(probs_list[i]), 5) for (i, c) in enumerate(classes)}
@@ -56,4 +56,4 @@ def predict_single(img_file):
     #return jsonify(predict_single(request.files['image']))
 
 if __name__ == '__main__':
-	app.run(host="127.0.0.1",port=8080,debug=True)
+	app.run(debug=True)
