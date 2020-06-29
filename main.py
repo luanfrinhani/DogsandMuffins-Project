@@ -30,26 +30,27 @@ def homepage():
 
 #Path('drive/My Drive/test')
 # load the learner
-#learn = load_learner(path='./Model', file='trained_model.pkl')
-#classes = learn.data.classes
+learn = load_learner(path='./Model', file='trained_model.pkl')
+classes = learn.data.classes
  
 
-#def predict_single(img_file):
-#    'function to take image and return prediction'
-#    prediction = learn.predict(open_image(img_file))
-#    probs_list = prediction[2].numpy()
-#    return(probs_list)
-#    return {
-#        'category': classes[prediction[1].item()],
-#        'probs': {c: round(float(probs_list[i]), 5) for (i, c) in enumerate(classes)}
-#    }
+def predict_single(img_file):
+    'function to take image and return prediction'
+    prediction = learn.predict(open_image(img_file))
+    probs_list = prediction#[2].numpy()
+    return(probs_list)
+    #return {
+    #    'category': classes[prediction[1].item()],
+    #    'probs': {c: round(float(probs_list[i]), 5) for (i, c) in enumerate(classes)}
+    #}
 
 
 @app.route("/",methods=['POST']) 
 def predict():
     if request.method == 'POST':
- 	#my_prediction = predict_single(request.files['image'])
-        return render_template('results.html',prediction = [0.01],comment = "asd")
+ 	my_prediction = predict_single(request.files['image'])
+	final_pred=str(my_prediction[0])
+        return render_template('results.html',prediction = final_pred,comment = "asd")
   
 # route for prediction
 #@app.route('/predict', methods=['POST'])
