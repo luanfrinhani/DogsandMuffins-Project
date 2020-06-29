@@ -49,7 +49,7 @@ def homepage():
 def predict():
     if request.method == 'POST':
  	#my_prediction = predict_single(request.files['image'])
-        return render_template('results.html',prediction = my_prediction,comment = "asd")
+        return render_template('results.html',prediction = [0.01],comment = "asd")
   
 # route for prediction
 #@app.route('/predict', methods=['POST'])
