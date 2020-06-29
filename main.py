@@ -37,6 +37,7 @@ def predict_single(img_file):
 
     prediction = learn.predict(open_image(img_file))
     probs_list = prediction  # [2].numpy()
+    print("Inside predict_single")
     return probs_list
 
 
@@ -49,7 +50,9 @@ def predict_single(img_file):
 def predict():
     if request.method == 'POST':
         my_prediction = predict_single(request.files['image'])
+        print("Inside predict")
         final_pred = str(my_prediction[0])
+        print(final_pred)
     return render_template('results.html', prediction=final_pred,
                            comment='asd')
 
