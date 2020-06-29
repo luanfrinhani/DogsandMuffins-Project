@@ -39,19 +39,19 @@ def predict_single(img_file):
     prediction = learn.predict(open_image(img_file))
     probs_list = prediction[2].numpy()
     return(probs_list)
-    return {
-        'category': classes[prediction[1].item()],
-        'probs': {c: round(float(probs_list[i]), 5) for (i, c) in enumerate(classes)}
-    }
+#    return {
+#        'category': classes[prediction[1].item()],
+#        'probs': {c: round(float(probs_list[i]), 5) for (i, c) in enumerate(classes)}
+#    }
 
 
 # route for prediction
-@app.route('/predict', methods=['POST'])
-def predict():
+#@app.route('/predict', methods=['POST'])
+#def predict():
     
-	if request.method == 'POST': 
-		my_prediction = predict_single(request.files['image'])
-	return render_template('results.html',prediction = my_prediction,comment = "Ahffan")
+#	if request.method == 'POST': 
+#		my_prediction = predict_single(request.files['image'])
+#	return render_template('results.html',prediction = my_prediction,comment = "Ahffan")
 
     #return jsonify(predict_single(request.files['image']))
 
