@@ -10,7 +10,8 @@ Original file is located at
 #!pip install flask_cors
 #pip install fastai
 
-from flask import Flask, request, jsonify
+
+from flask import Flask,render_template,request,url_for,jsonify 
 from fastai.basic_train import load_learner
 from fastai.vision import open_image
 from flask_cors import CORS,cross_origin
@@ -34,6 +35,7 @@ def predict_single(img_file):
     'function to take image and return prediction'
     prediction = learn.predict(open_image(img_file))
     probs_list = prediction[2].numpy()
+    return(probs_list)
     return {
         'category': classes[prediction[1].item()],
         'probs': {c: round(float(probs_list[i]), 5) for (i, c) in enumerate(classes)}
@@ -43,7 +45,12 @@ def predict_single(img_file):
 # route for prediction
 @app.route('/predict', methods=['POST'])
 def predict():
-    return jsonify(predict_single(request.files['image']))
+    
+	if request.method == 'POST': 
+		my_prediction = predict_single(request.files['image'])
+	return render_template('results.html',prediction = my_prediction,comment = "Ahffan")
+
+    #return jsonify(predict_single(request.files['image']))
 
 if __name__ == '__main__':
     app.run()
