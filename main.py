@@ -12,9 +12,9 @@ Original file is located at
 
 
 from flask import Flask,render_template,request,url_for,jsonify 
-#from fastai.basic_train import load_learner
-#from fastai.vision import open_image
-#from flask_cors import CORS,cross_origin
+from fastai.basic_train import load_learner
+from fastai.vision import open_image
+from flask_cors import CORS,cross_origin
 app = Flask(__name__)
 #CORS(app, support_credentials=True)
 
@@ -45,6 +45,12 @@ def homepage():
 #    }
 
 
+@app.route("/",methods=['POST']) 
+def predict():
+    if request.method == 'POST':
+ 	#my_prediction = predict_single(request.files['image'])
+        return render_template('results.html',prediction = my_prediction,comment = "asd")
+  
 # route for prediction
 #@app.route('/predict', methods=['POST'])
 #def predict():
