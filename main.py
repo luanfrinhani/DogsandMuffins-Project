@@ -58,7 +58,7 @@ def predict():
     if request.method == 'POST':
         my_prediction = predict_single(request.files['image'])        
         logging.debug('Before final_pred')
-        final_pred = str(my_prediction[0])
+        final_pred = str(my_prediction)
         logging.debug('After final_pred')
     return render_template('results.html', prediction=final_pred,
                            comment='asd')
