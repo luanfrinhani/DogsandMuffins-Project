@@ -26,13 +26,11 @@
 		<textarea name="comment" rows="4" cols="50"></textarea>
 		<br/>
 
-		<input type="submit" class="btn-info" value="predict">
-		
-		<form action = "http://localhost:5000/uploader" method = "POST" 
-        enctype = "multipart/form-data">
-        <input type = "file" name = "image" />
-        <input type = "Submit" value ="predict Image"/>
-      
+		<input type="submit" class="btn-info" value="predict"> 
+		<input type="file" name="image" id="fileToUpload">
+		<input type="submit" value="Upload Image" name="image">
+			 
+			
 	</form>
 		
 	</div>
