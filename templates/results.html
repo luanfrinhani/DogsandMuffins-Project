@@ -11,20 +11,16 @@
 		<div id="brandname">
 			ML App
 		</div>
-		<h2>Spam Detection For Youtube Comments</h2>
+		<h2>Classification Results</h2>
 		
 	</div>
 	</header>
-	<p style="color:blue;font-size:20;text-align: center;"><b>Results for Comment</b></p>
+	<p style="color:blue;font-size:20;text-align: center;"><b>Image Prediction</b></p>
 	<div class="results">
 
+ 
+		<h3>This is a: {{ prediction }}<h3>
 
-		
-	{% if prediction == "Muffin"%}
-	<h2 style="color:red;">Muffin</h2>
-	{% elif prediction == 0%}
-	<h2 style="color:blue;">Not a Spam (It is a Ham)</h2>
-	{% endif %}
 
 	</div>
 
