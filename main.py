@@ -55,7 +55,8 @@ def predict_single(img_file):
 
 @app.route('/', methods=['POST'])
 def predict():
-    if request.method == 'POST':
+    if request.method == 'POST':  
+        logging.debug('Before my_prediction')
         my_prediction = predict_single(request.files['image'])        
         logging.debug('Before final_pred')
         final_pred = str(my_prediction)
