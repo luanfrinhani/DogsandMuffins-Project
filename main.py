@@ -59,7 +59,7 @@ def predict():
         logging.debug('Before my_prediction')
         my_prediction = predict_single(request.files['image'])        
         logging.debug('Before final_pred')
-        final_pred = str(my_prediction)
+        final_pred = str(my_prediction[0])
         logging.debug('After final_pred')
     return render_template('results.html', prediction=final_pred,
                            comment='asd')
