@@ -15,19 +15,18 @@ app = Flask(__name__)
 def homepage():
     return render_template('index.html')
  
-learn = load_learner(path='./Model', file='trained_model.pkl')
+learn = load_learner(path='./Model', file='Segmantation-1.pkl')
 classes = learn.data.classes
 logging.debug('Learnt classes')
 
 
 def predict_single(img_file):
     '''function to take image and return prediction'''
-    logging.debug('This function to take image and return prediction')
+    logging.debug('Funcao para pegar uma imagem e retornar a prediction')
 
     prediction = learn.predict(open_image(img_file))
-    probs_list = prediction  # [2].numpy()
-    print("Inside predict_single")
-    logging.debug('Before probs_list')
+    probs_list = prediction 
+    logging.debug('Antes da lista de probabilidades')
     return probs_list
 
  
@@ -35,11 +34,11 @@ def predict_single(img_file):
 @app.route('/', methods=['POST'])
 def predict():
     if request.method == 'POST':  
-        logging.debug('Before my_prediction')
+        logging.debug('Antes da predição')
         my_prediction = predict_single(request.files['image'])        
-        logging.debug('Before final_pred')
-        final_pred = str(my_prediction[0])
-        logging.debug('After final_pred')
+        logging.debug('Antes da precição final')
+        final_pred = my_prediction[0]
+        logging.debug('Depois da predição final')
     return render_template('results.html', prediction=final_pred,
                            comment='asd')
  
